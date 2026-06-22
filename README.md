@@ -335,7 +335,7 @@ header h1{font-size:18px;font-weight:700;color:#fff;letter-spacing:-.3px;flex:1;
 
 <script>
 // ─── CONFIG ────────────────────────────────────────────────────
-var FIREBASE_URL = ''; // e.g. 'https://your-app-default-rtdb.firebaseio.com'
+var FIREBASE_URL = 'https://integrity-cut-list-default-rtdb.firebaseio.com';
 // ───────────────────────────────────────────────────────────────
 
 var DEPTS = [
