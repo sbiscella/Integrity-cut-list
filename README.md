@@ -9,11 +9,11 @@
 <title>Integrity Cut List</title>
 <style>
 :root {
-  --bg:#f2f2f7; --card:#fff; --border:#e5e5ea; --border-light:#f2f2f7;
-  --text:#1c1c1e; --text2:#636366; --text3:#8e8e93;
-  --blue:#007aff; --green:#34c759; --orange:#ff9500; --red:#ff3b30;
-  --hdr:#1c1c1e;
-  --chop:#378ADD; --panel:#1D9E75; --cope:#D85A30; --door:#9E5DB3; --ready:#ff9500;
+  --bg:#0a1628; --card:#112240; --border:#1e3a5f; --border-light:#1a3050;
+  --text:#e8edf5; --text2:#a8b8cc; --text3:#6e88a6;
+  --blue:#4a9eff; --green:#34c759; --orange:#ff9500; --red:#ff453a;
+  --hdr:#061022;
+  --chop:#4a9eff; --panel:#30d158; --cope:#ff6b35; --door:#bf5af2; --ready:#ff9f0a; --rebuild:#e056a0;
 }
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
 html,body{height:100%;}
@@ -33,7 +33,7 @@ header h1{font-size:18px;font-weight:700;color:#fff;letter-spacing:-.3px;flex:1;
 .tab-bar{
   display:flex;background:var(--hdr);padding:0 4px 0;
   overflow-x:auto;-webkit-overflow-scrolling:touch;
-  scrollbar-width:none;gap:2px;
+  scrollbar-width:none;gap:2px;border-top:1px solid #1e3a5f;
 }
 .tab-bar::-webkit-scrollbar{display:none;}
 .tab{
@@ -57,20 +57,20 @@ header h1{font-size:18px;font-weight:700;color:#fff;letter-spacing:-.3px;flex:1;
 @media(min-width:680px){.page{padding:14px;}}
 
 /* ── CARD ── */
-.card{background:var(--card);border-radius:16px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.08);}
+.card{background:var(--card);border-radius:16px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.35);}
 .card-header{display:flex;align-items:center;gap:10px;padding:14px 14px 12px;border-bottom:1px solid var(--border-light);}
 .dept-bar{width:5px;height:40px;border-radius:3px;flex-shrink:0;}
 .dept-info{flex:1;}
 .dept-name{font-size:16px;font-weight:700;color:var(--text);}
 .dept-stats{font-size:12px;color:var(--text3);margin-top:2px;}
-.dept-hint{font-size:11px;padding:5px 14px 4px;font-style:italic;color:var(--text3);border-bottom:1px solid var(--border-light);}
+.dept-hint{font-size:11px;padding:5px 14px 4px;font-style:italic;color:#4a9eff;border-bottom:1px solid var(--border-light);background:#0d1e38;}
 
 /* ── ADD ROW ── */
-.add-row{display:flex;gap:8px;padding:10px 12px;border-bottom:1px solid var(--border-light);background:#fafafa;}
+.add-row{display:flex;gap:8px;padding:10px 12px;border-bottom:1px solid var(--border-light);background:#0d1e38;}
 .add-row input{
   flex:1;min-width:0;font-size:16px;padding:10px 13px;
   border:1.5px solid var(--border);border-radius:11px;
-  background:var(--card);color:var(--text);outline:none;
+  background:#0a1628;color:var(--text);outline:none;
   -webkit-appearance:none;appearance:none;
 }
 .add-row input:focus{border-color:var(--blue);}
@@ -89,8 +89,8 @@ header h1{font-size:18px;font-weight:700;color:#fff;letter-spacing:-.3px;flex:1;
   min-height:56px;transition:background .1s;
 }
 .order-item:last-child{border-bottom:none;}
-.order-item:active{background:#f5f5f7;}
-.order-item.done{background:#fafafa;}
+.order-item:active{background:#1a3050;}
+.order-item.done{background:#0d1e38;}
 
 .status-btn{
   width:32px;height:32px;min-width:32px;border-radius:50%;
@@ -111,37 +111,37 @@ header h1{font-size:18px;font-weight:700;color:#fff;letter-spacing:-.3px;flex:1;
 
 .order-right{display:flex;align-items:center;gap:6px;flex-shrink:0;}
 .badge{font-size:11px;font-weight:600;padding:4px 9px;border-radius:20px;white-space:nowrap;}
-.badge.pending{background:#f2f2f7;color:#636366;}
+.badge.pending{background:#1a3050;color:#6e88a6;}
 /* .badge.in_progress removed */
-.badge.done{background:#e8f8ec;color:var(--green);}
+.badge.done{background:#0d3320;color:var(--green);}
 
 .del-btn{
-  background:#ff3b3014;border:none;cursor:pointer;color:var(--red);
+  background:#ff453a18;border:none;cursor:pointer;color:var(--red);
   font-size:15px;font-weight:700;width:36px;height:36px;min-width:36px;
   border-radius:9px;display:flex;align-items:center;justify-content:center;
   touch-action:manipulation;padding:0;
 }
-.del-btn:active{background:#ff3b3028;transform:scale(.93);}
+.del-btn:active{background:#ff453a30;transform:scale(.93);}
 
 /* ── COMPLETED TOGGLE ── */
 .completed-toggle{
   display:flex;align-items:center;gap:6px;padding:9px 14px;
   cursor:pointer;border-top:1px solid var(--border-light);
-  background:#fafafa;touch-action:manipulation;
+  background:#0d1e38;touch-action:manipulation;
 }
-.completed-toggle:active{background:#f0f0f2;}
+.completed-toggle:active{background:#1a3050;}
 .toggle-label{font-size:13px;font-weight:500;color:var(--text3);flex:1;}
 .toggle-arrow{font-size:12px;color:var(--text3);transition:transform .2s;}
 .toggle-arrow.open{transform:rotate(180deg);}
 
 /* ── READY FOR ASSEMBLY TAB ── */
 .ready-intro{
-  background:linear-gradient(135deg,#fff6e6,#fff);
-  border:1px solid #ffe0a0;border-radius:14px;
+  background:linear-gradient(135deg,#1a3050,#112240);
+  border:1px solid #2a4a70;border-radius:14px;
   padding:14px 16px;margin-bottom:12px;
 }
-.ready-intro h2{font-size:15px;font-weight:700;color:#7d5a00;margin-bottom:3px;}
-.ready-intro p{font-size:13px;color:#a07830;line-height:1.5;}
+.ready-intro h2{font-size:15px;font-weight:700;color:#ff9f0a;margin-bottom:3px;}
+.ready-intro p{font-size:13px;color:#a8b8cc;line-height:1.5;}
 
 .ready-item{
   display:flex;align-items:center;gap:10px;
@@ -153,7 +153,7 @@ header h1{font-size:18px;font-weight:700;color:#fff;letter-spacing:-.3px;flex:1;
 .ready-due{font-size:11px;font-weight:600;color:var(--orange);margin-top:3px;}
 .ready-badge{
   font-size:12px;font-weight:700;padding:5px 11px;border-radius:20px;
-  background:linear-gradient(135deg,#fff0d0,#ffe4a0);color:#7d5a00;white-space:nowrap;
+  background:linear-gradient(135deg,#2a3a10,#1a2a08);color:#ff9f0a;white-space:nowrap;border:1px solid #ff9f0a40;
 }
 .ready-empty{font-size:14px;color:var(--text3);text-align:center;padding:40px 20px;line-height:1.6;}
 .ready-empty span{font-size:32px;display:block;margin-bottom:10px;}
@@ -162,30 +162,30 @@ header h1{font-size:18px;font-weight:700;color:#fff;letter-spacing:-.3px;flex:1;
 
 /* ── SETUP BANNER ── */
 .setup-banner{
-  background:#fff8e6;border-radius:12px;margin:0 0 12px;
-  padding:11px 14px;font-size:13px;color:#7d5a00;line-height:1.5;
-  border:1px solid #ffe58f;
+  background:#1a3050;border-radius:12px;margin:0 0 12px;
+  padding:11px 14px;font-size:13px;color:#a8b8cc;line-height:1.5;
+  border:1px solid #2a4a70;
 }
-.setup-banner strong{display:block;margin-bottom:2px;font-size:13px;font-weight:600;}
+.setup-banner strong{display:block;margin-bottom:2px;font-size:13px;font-weight:600;color:#e8edf5;}
 
 /* ── IMPORT SHEET ── */
 .sheet-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:100;align-items:flex-end;justify-content:center;}
 .sheet-bg.open{display:flex;}
 @media(min-width:520px){.sheet-bg{align-items:center;padding:24px;}}
-.sheet{background:var(--card);border-radius:20px 20px 0 0;padding:20px 18px 44px;width:100%;max-width:500px;max-height:90vh;overflow-y:auto;}
+.sheet{background:#112240;border-radius:20px 20px 0 0;padding:20px 18px 44px;width:100%;max-width:500px;max-height:90vh;overflow-y:auto;border:1px solid #1e3a5f;}
 @media(min-width:520px){.sheet{border-radius:18px;padding:22px 20px;}}
 .sheet-handle{width:36px;height:4px;background:#e0e0e0;border-radius:2px;margin:0 auto 16px;}
 .sheet h3{font-size:18px;font-weight:700;color:var(--text);margin-bottom:5px;}
 .sheet-sub{font-size:13px;color:var(--text3);margin-bottom:16px;line-height:1.5;}
-.drop-zone{border:2px dashed #c7c7cc;border-radius:14px;padding:30px 16px;text-align:center;cursor:pointer;transition:all .15s;margin-bottom:14px;position:relative;background:#fafafa;}
-.drop-zone.over{border-color:var(--blue);background:#e8f4ff;}
+.drop-zone{border:2px dashed #1e3a5f;border-radius:14px;padding:30px 16px;text-align:center;cursor:pointer;transition:all .15s;margin-bottom:14px;position:relative;background:#0a1628;}
+.drop-zone.over{border-color:var(--blue);background:#0d1e38;}
 .drop-zone input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;}
 .drop-icon{font-size:36px;margin-bottom:8px;}
 .drop-label{font-size:15px;font-weight:600;color:var(--text);margin-bottom:4px;}
 .drop-sub{font-size:12px;color:var(--text3);}
 #preview-area{display:none;margin-bottom:14px;}
 #preview-area h4{font-size:13px;font-weight:600;color:var(--text);margin-bottom:7px;}
-.preview-list{max-height:200px;overflow-y:auto;border:1px solid var(--border);border-radius:11px;}
+.preview-list{max-height:200px;overflow-y:auto;border:1px solid #1e3a5f;border-radius:11px;background:#0a1628;}
 .prev-item{display:flex;align-items:center;padding:9px 12px;border-bottom:1px solid var(--border-light);gap:8px;}
 .prev-item:last-child{border-bottom:none;}
 .prev-item.dup{opacity:.45;}
@@ -198,8 +198,8 @@ header h1{font-size:18px;font-weight:700;color:#fff;letter-spacing:-.3px;flex:1;
 #preview-count{font-size:12px;color:var(--text3);margin-top:7px;}
 .sheet-btns{display:flex;gap:10px;margin-top:4px;}
 .sheet-btns button{flex:1;padding:14px;border-radius:13px;border:none;font-size:16px;font-weight:600;cursor:pointer;touch-action:manipulation;}
-.btn-cancel{background:#f2f2f7;color:var(--text);}
-.btn-cancel:active{background:#e5e5ea;}
+.btn-cancel{background:#1a3050;color:var(--text);}
+.btn-cancel:active{background:#2a4a70;}
 .btn-confirm{background:var(--blue);color:#fff;}
 .btn-confirm:active{background:#0062cc;}
 .btn-confirm:disabled{background:#c7c7cc;}
@@ -207,7 +207,7 @@ header h1{font-size:18px;font-weight:700;color:#fff;letter-spacing:-.3px;flex:1;
 /* ── CONFIRM SHEET ── */
 .confirm-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:200;align-items:center;justify-content:center;padding:20px;}
 .confirm-bg.open{display:flex;}
-.confirm-box{background:var(--card);border-radius:16px;padding:22px 18px 16px;width:100%;max-width:300px;}
+.confirm-box{background:#112240;border-radius:16px;padding:22px 18px 16px;width:100%;max-width:300px;border:1px solid #1e3a5f;}
 .confirm-box h3{font-size:17px;font-weight:700;color:var(--text);margin-bottom:7px;}
 .confirm-box p{font-size:14px;color:var(--text2);margin-bottom:18px;line-height:1.5;}
 .confirm-btns{display:flex;gap:10px;}
@@ -222,20 +222,66 @@ header h1{font-size:18px;font-weight:700;color:#fff;letter-spacing:-.3px;flex:1;
 .pin-key{
   padding:16px 8px;border-radius:12px;border:none;
   font-size:20px;font-weight:600;color:var(--text);
-  background:#f2f2f7;cursor:pointer;touch-action:manipulation;
+  background:#1a3050;cursor:pointer;touch-action:manipulation;
   transition:background .1s;
 }
-.pin-key:active{background:#e0e0e5;transform:scale(.93);}
-.pin-cancel-key{font-size:13px;font-weight:600;color:#ff3b30;background:#fff0ef;}
-.pin-cancel-key:active{background:#ffe0de;}
-.pin-del-key{font-size:18px;background:#f2f2f7;}
+.pin-key:active{background:#2a4a70;transform:scale(.93);}
+.pin-cancel-key{font-size:13px;font-weight:600;color:#ff453a;background:#2a1a1a;}
+.pin-cancel-key:active{background:#3a2020;}
+.pin-del-key{font-size:18px;background:#1a3050;}
+
+/* ── REBUILD TAB ── */
+.rebuild-intro{background:linear-gradient(135deg,#1a1030,#112240);border:1px solid #3a1a5f;border-radius:14px;padding:14px 16px;margin-bottom:12px;}
+.rebuild-intro h2{font-size:15px;font-weight:700;color:#e056a0;margin-bottom:3px;}
+.rebuild-intro p{font-size:13px;color:#a8b8cc;line-height:1.5;}
+.rebuild-form{background:var(--card);border-radius:16px;padding:16px 14px;margin-bottom:12px;box-shadow:0 4px 16px rgba(0,0,0,.35);}
+.rebuild-form h3{font-size:14px;font-weight:700;color:#e056a0;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border-light);letter-spacing:.3px;text-transform:uppercase;}
+.field-row{display:flex;flex-direction:column;gap:4px;margin-bottom:10px;}
+.field-row label{font-size:12px;font-weight:600;color:var(--text3);letter-spacing:.3px;text-transform:uppercase;}
+.field-row input,.field-row select{
+  font-size:15px;padding:10px 12px;
+  border:1.5px solid var(--border);border-radius:10px;
+  background:#0a1628;color:var(--text);outline:none;
+  -webkit-appearance:none;appearance:none;width:100%;
+}
+.field-row input:focus,.field-row select:focus{border-color:#e056a0;}
+.field-row input::placeholder{color:var(--text3);}
+.field-row.optional label::after{content:' (optional)';font-weight:400;color:var(--text3);font-size:11px;text-transform:none;letter-spacing:0;}
+.field-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+@media(max-width:480px){.field-grid{grid-template-columns:1fr;}}
+.submit-btn{width:100%;padding:14px;border:none;border-radius:12px;background:#e056a0;color:#fff;font-size:16px;font-weight:700;cursor:pointer;touch-action:manipulation;margin-top:6px;}
+.submit-btn:active{background:#c0408a;transform:scale(.98);}
+.rebuild-list{background:var(--card);border-radius:16px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.35);}
+.rebuild-list-header{display:flex;align-items:center;justify-content:space-between;padding:13px 14px 11px;border-bottom:1px solid var(--border-light);}
+.rebuild-list-header h3{font-size:15px;font-weight:700;color:var(--text);}
+.rebuild-count{font-size:12px;color:var(--text3);}
+.rebuild-item{padding:12px 14px;border-bottom:1px solid var(--border-light);}
+.rebuild-item:last-child{border-bottom:none;}
+.rebuild-item-top{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:6px;}
+.rebuild-order{font-size:18px;font-weight:800;color:var(--text);font-variant-numeric:tabular-nums;flex:1;}
+.rebuild-qty{font-size:12px;font-weight:700;padding:3px 9px;border-radius:20px;background:#2a1040;color:#e056a0;white-space:nowrap;}
+.rebuild-item-del{background:#ff453a18;border:none;cursor:pointer;color:var(--red);font-size:15px;font-weight:700;width:34px;height:34px;min-width:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;touch-action:manipulation;padding:0;flex-shrink:0;}
+.rebuild-item-del:active{background:#ff453a30;}
+.rebuild-details{display:grid;grid-template-columns:1fr 1fr;gap:4px 12px;}
+@media(max-width:400px){.rebuild-details{grid-template-columns:1fr;}}
+.rebuild-detail{font-size:12px;color:var(--text2);}
+.rebuild-detail strong{color:var(--text3);font-weight:600;}
+.rebuild-empty{font-size:13px;color:var(--text3);text-align:center;padding:28px 0;}
+.rebuild-checks-done{font-size:11px;font-weight:600;color:var(--green);padding:2px 8px;border-radius:10px;background:#0d3320;margin-left:6px;}
+@media(max-width:480px){.rebuild-item [style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important;}}
 </style>
 </head>
 <body>
 
 <header>
   <div class="hdr-top">
-    <h1>🪵 Integrity Cut List</h1>
+    <div style="display:flex;align-items:center;gap:10px;flex:1;min-width:0;">
+      <img src="data:image/jpeg;base64,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" alt="IDI Logo" style="height:36px;width:36px;object-fit:contain;flex-shrink:0;border-radius:4px;">
+      <div style="min-width:0;">
+        <div style="font-size:16px;font-weight:700;color:#fff;letter-spacing:-.2px;white-space:nowrap;">Integrity Cut List</div>
+        <div style="font-size:10px;color:#4a9eff;font-weight:500;letter-spacing:.5px;text-transform:uppercase;">Production Tracker</div>
+      </div>
+    </div>
     <button class="import-btn" id="open-import-btn">⬆ Import</button>
   </div>
   <div class="sync-row">
@@ -253,11 +299,11 @@ header h1{font-size:18px;font-weight:700;color:#fff;letter-spacing:-.3px;flex:1;
     <div class="tab" data-tab="cope">
       <div class="tab-dot" style="background:var(--cope)"></div>Cope
     </div>
-    <div class="tab" data-tab="door_assy">
-      <div class="tab-dot" style="background:var(--door)"></div>Door Assembly
-    </div>
     <div class="tab" data-tab="ready">
       <div class="tab-dot" style="background:var(--ready)"></div>Ready for Assembly
+    </div>
+    <div class="tab" data-tab="rebuild">
+      <div class="tab-dot" style="background:#e056a0"></div>Rebuild
     </div>
   </div>
 </header>
@@ -266,10 +312,11 @@ header h1{font-size:18px;font-weight:700;color:#fff;letter-spacing:-.3px;flex:1;
 <div class="page active" id="page-chop_saw"></div>
 <div class="page" id="page-panel_saw"></div>
 <div class="page" id="page-cope"></div>
-<div class="page" id="page-door_assy"></div>
-
 <!-- READY FOR ASSEMBLY PAGE -->
 <div class="page" id="page-ready"></div>
+
+<!-- REBUILD PAGE -->
+<div class="page" id="page-rebuild"></div>
 
 <!-- IMPORT SHEET -->
 <div class="sheet-bg" id="import-modal">
@@ -335,17 +382,15 @@ header h1{font-size:18px;font-weight:700;color:#fff;letter-spacing:-.3px;flex:1;
 
 <script>
 // ─── CONFIG ────────────────────────────────────────────────────
-var FIREBASE_URL = 'https://integrity-cut-list-default-rtdb.firebaseio.com';
+var FIREBASE_URL = ''; // e.g. 'https://your-app-default-rtdb.firebaseio.com'
 // ───────────────────────────────────────────────────────────────
 
 var DEPTS = [
   {id:'chop_saw',  name:'Chop Saw',      color:'#378ADD'},
   {id:'panel_saw', name:'Panel Saw',     color:'#1D9E75'},
-  {id:'cope',      name:'Cope',          color:'#D85A30'},
-  {id:'door_assy', name:'Door Assembly', color:'#9E5DB3'}
+  {id:'cope',      name:'Cope',          color:'#D85A30'}
 ];
 var CHOP_ID    = 'chop_saw';
-var DOOR_ID    = 'door_assy';
 var FEEDER_IDS = ['chop_saw','panel_saw','cope'];
 var ALL_IDS    = DEPTS.map(function(d){return d.id;});
 
@@ -395,6 +440,7 @@ async function loadAll(){
   note('Syncing…');
   for(var i=0;i<DEPTS.length;i++) data[DEPTS[i].id]=await loadDept(DEPTS[i].id);
   renderAll();
+  loadRebuild();
   note(FIREBASE_URL?'Live · '+timeNow():'Local · '+timeNow());
 }
 
@@ -408,12 +454,32 @@ document.getElementById('tab-bar').addEventListener('click',function(e){
   tab.classList.add('active');
   document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active');});
   document.getElementById('page-'+id).classList.add('active');
+  if(id==='rebuild') renderRebuildTab();
+  if(id==='ready'){
+    // Always pull fresh data from Firebase before rendering ready tab
+    if(FIREBASE_URL){
+      note('Syncing…');
+      Promise.all(DEPTS.map(function(d){
+        return fetch(FIREBASE_URL+'/depts/'+d.id+'.json')
+          .then(function(r){return r.json();})
+          .then(function(j){data[d.id]=Array.isArray(j)?j:(j?Object.values(j):[]);})
+          .catch(function(){});
+      })).then(function(){
+        renderReadyTab();
+        updateTabBadges();
+        note('Live · '+timeNow());
+      });
+    } else {
+      renderReadyTab();
+    }
+  }
 });
 
 // ─── RENDER ALL ────────────────────────────────────────────────
 function renderAll(){
   DEPTS.forEach(function(dept){
     var page=document.getElementById('page-'+dept.id);
+    if(!page) return;
     page.innerHTML='';
     if(!FIREBASE_URL){
       var banner=document.createElement('div');
@@ -446,6 +512,7 @@ function updateTabBadges(){
     if(tab.classList.contains('active')) tab.style.borderBottomColor=color;
     else tab.style.borderBottomColor='transparent';
   });
+  // Remove door tab underline if somehow still present
   // Ready tab badge: count ready orders
   var readyTab=document.querySelector('.tab[data-tab="ready"]');
   if(readyTab){
@@ -467,6 +534,7 @@ function updateTabBadges(){
 // ─── READY FOR ASSEMBLY ────────────────────────────────────────
 // An order is "ready" when it is marked done in BOTH panel_saw AND cope
 function getReadyOrders(){
+  // Regular orders: done in both panel_saw AND cope
   var panelDone={};
   (data['panel_saw']||[]).forEach(function(o){
     if(o.status==='done') panelDone[o.num.toLowerCase()]=o;
@@ -477,6 +545,22 @@ function getReadyOrders(){
       ready.push(o);
     }
   });
+
+  // Rebuild entries: all three dept checks ticked
+  rebuildData.forEach(function(r){
+    if(r.checks && r.checks.chop && r.checks.panel && r.checks.cope){
+      // Add as a "rebuild" tagged order so Ready tab can style it differently
+      ready.push({
+        num: r.order,
+        species: r.material,
+        profile: r.railProfile||'',
+        due: r.doorSize||'',
+        isRebuild: true,
+        rebuildRef: r
+      });
+    }
+  });
+
   return sortOrders(ready);
 }
 
@@ -558,9 +642,37 @@ function renderReadyTab(){
   var introInner=document.createElement('div');
   introInner.style.cssText='display:flex;align-items:flex-start;justify-content:space-between;gap:10px;';
   var introText=document.createElement('div');
-  introText.innerHTML='<h2>🟡 Ready for Door Assembly</h2>'
-    +'<p>Orders marked <strong>Complete</strong> in both Panel Saw and Cope.</p>';
+  introText.innerHTML='<h2>🟡 Ready for Assembly</h2>'
+    +'<p>Orders marked <strong>Complete</strong> in both Panel Saw and Cope. Complete them here when done building.</p>';
+  // Refresh button always visible in ready tab
+  var rBtn=document.createElement('button');
+  rBtn.textContent='↻';
+  rBtn.title='Refresh';
+  rBtn.style.cssText='flex-shrink:0;font-size:20px;font-weight:700;padding:6px 10px;'
+    +'border:none;border-radius:10px;background:transparent;color:#ff9f0a;'
+    +'cursor:pointer;touch-action:manipulation;line-height:1;';
+  rBtn.addEventListener('click',function(){
+    rBtn.style.opacity='0.5';
+    if(FIREBASE_URL){
+      note('Syncing…');
+      Promise.all(DEPTS.map(function(d){
+        return fetch(FIREBASE_URL+'/depts/'+d.id+'.json')
+          .then(function(r){return r.json();})
+          .then(function(j){data[d.id]=Array.isArray(j)?j:(j?Object.values(j):[]);})
+          .catch(function(){});
+      })).then(function(){
+        renderReadyTab();
+        updateTabBadges();
+        note('Live · '+timeNow());
+        rBtn.style.opacity='1';
+      });
+    } else {
+      renderReadyTab();
+      rBtn.style.opacity='1';
+    }
+  });
   introInner.appendChild(introText);
+  introInner.appendChild(rBtn);
 
   if(readyOrders.length>0){
     var clearBtn=document.createElement('button');
@@ -611,11 +723,17 @@ function renderReadyTab(){
         meta.textContent=pts.join(' · ');
         info.appendChild(meta);
       }
-      if(o.due){
+      if(o.due && !o.isRebuild){
         var dueEl=document.createElement('div');
         dueEl.className='ready-due';
         dueEl.textContent='📅 '+o.due;
         info.appendChild(dueEl);
+      }
+      if(o.isRebuild && o.rebuildRef){
+        var rbDetail=document.createElement('div');
+        rbDetail.style.cssText='font-size:11px;color:#a070c0;margin-top:2px;';
+        rbDetail.textContent='Door: '+(o.rebuildRef.doorSize||'')+(o.rebuildRef.panelSpecies?' · '+o.rebuildRef.panelSpecies:'');
+        info.appendChild(rbDetail);
       }
 
       // Complete + delete buttons
@@ -635,18 +753,32 @@ function renderReadyTab(){
       delBtn.type='button'; delBtn.className='del-btn'; delBtn.textContent='✕';
       delBtn.title='Remove this order';
 
+      var badge=document.createElement('span');
+      badge.className='ready-badge';
+      if(o.isRebuild){
+        badge.textContent='Rebuild ✓';
+        badge.style.cssText='font-size:12px;font-weight:700;padding:5px 11px;border-radius:20px;'
+          +'background:#2a1040;color:#e056a0;white-space:nowrap;border:1px solid #e056a040;';
+      } else {
+        badge.textContent='Ready ✓';
+      }
+
+      rowRight.appendChild(badge);
       rowRight.appendChild(completeBtn);
       rowRight.appendChild(delBtn);
       item.appendChild(info);
       item.appendChild(rowRight);
 
       (function(orderNum){
-        // Complete — clears from ALL depts entirely
+        // Complete — clears from ALL depts + rebuild list if applicable
         completeBtn.addEventListener('click',function(){
           ALL_IDS.forEach(function(id){
             data[id]=(data[id]||[]).filter(function(x){return x.num.toLowerCase()!==orderNum.toLowerCase();});
           });
-          saveMany(ALL_IDS).then(function(){renderAll();note('Completed '+orderNum+' · '+timeNow());});
+          // Also remove from rebuildData if this is a rebuild entry
+          var rIdx=rebuildData.findIndex(function(r){return r.order.toLowerCase()===orderNum.toLowerCase();});
+          if(rIdx>=0){ rebuildData.splice(rIdx,1); saveRebuild(); }
+          saveMany(ALL_IDS).then(function(){renderAll();renderRebuildList();note('Completed '+orderNum+' · '+timeNow());});
         });
         // Delete — same, remove from all
         delBtn.addEventListener('click',function(){
@@ -671,7 +803,7 @@ function makeDeptCard(dept){
   var allOrders=sortOrders(data[dept.id]||[]);
   var active   =allOrders.filter(function(o){return o.status!=='done';});
   var completed=allOrders.filter(function(o){return o.status==='done';});
-  var isChop=dept.id===CHOP_ID, isDoor=dept.id===DOOR_ID;
+  var isChop=dept.id===CHOP_ID;
 
   var card=document.createElement('div');
   card.className='card';
@@ -696,20 +828,7 @@ function makeDeptCard(dept){
           function(){
             (data[deptId]||[]).forEach(function(o){ o.status='done'; });
             saveDept(deptId,data[deptId]).then(function(){
-              // If door assembly, also clear feeders for all now-done orders
-              if(deptId===DOOR_ID){
-                var doneNums={};
-                (data[deptId]||[]).forEach(function(o){ doneNums[o.num.toLowerCase()]=true; });
-                var toSave=[DOOR_ID];
-                FEEDER_IDS.forEach(function(fid){
-                  var before=(data[fid]||[]).length;
-                  data[fid]=(data[fid]||[]).filter(function(x){return !doneNums[x.num.toLowerCase()];});
-                  if(data[fid].length!==before) toSave.push(fid);
-                });
-                saveMany(toSave).then(function(){renderAll();note('Completed all in '+deptName+' · '+timeNow());});
-              } else {
                 renderAll();note('Completed all in '+deptName+' · '+timeNow());
-              }
             });
           },
           '✅ Complete All — '+deptName,
@@ -723,9 +842,7 @@ function makeDeptCard(dept){
   card.appendChild(hd);
 
   // Hint
-  var hint=isChop?'Adding here also adds to Panel Saw, Cope & Door Assembly.'
-    :isDoor?'Marking an order Complete (✓) removes it from Chop Saw, Panel Saw & Cope.'
-    :(dept.id==='panel_saw'||dept.id==='cope')?'Adding here also adds to Door Assembly.':'';
+  var hint=isChop?'Adding here also adds to Panel Saw & Cope.':'';
   if(hint){
     var h=document.createElement('div');
     h.className='dept-hint'; h.textContent=hint;
@@ -746,17 +863,54 @@ function makeDeptCard(dept){
   function doAdd(){
     var num=inp.value.trim();
     if(!num){inp.focus();return;}
-    var targets=isChop?ALL_IDS:isDoor?[DOOR_ID]:[dept.id,DOOR_ID];
-    var toUpdate=[];
-    targets.forEach(function(id){
-      if(!hasOrder(id,num)){
+    var targets=isChop?ALL_IDS:[dept.id];
+
+    // Check if this order already exists in ANY of the target depts
+    var alreadyIn=targets.filter(function(id){return hasOrder(id,num);});
+
+    function forceAdd(){
+      // Remove existing entry from targets first, then re-add fresh
+      var toUpdate=[];
+      targets.forEach(function(id){
+        // Remove old if present
+        data[id]=(data[id]||[]).filter(function(o){return o.num.toLowerCase()!==num.toLowerCase();});
         if(!data[id]) data[id]=[];
         data[id].push({num:num,status:'pending',ts:Date.now()});
         toUpdate.push(id);
-      }
-    });
-    inp.value='';
-    if(toUpdate.length) saveMany(toUpdate).then(function(){renderAll();note('Saved '+timeNow());});
+      });
+      inp.value='';
+      saveMany(toUpdate).then(function(){renderAll();note('Re-added '+num+' · '+timeNow());});
+    }
+
+    function addNew(){
+      var toUpdate=[];
+      targets.forEach(function(id){
+        if(!hasOrder(id,num)){
+          if(!data[id]) data[id]=[];
+          data[id].push({num:num,status:'pending',ts:Date.now()});
+          toUpdate.push(id);
+        }
+      });
+      inp.value='';
+      if(toUpdate.length) saveMany(toUpdate).then(function(){renderAll();note('Saved '+timeNow());});
+    }
+
+    if(alreadyIn.length>0){
+      // Order exists — ask if they want to re-add it
+      var deptNames=alreadyIn.map(function(id){
+        var d=DEPTS.find(function(x){return x.id===id;});
+        return d?d.name:id;
+      }).join(', ');
+      showConfirm(
+        num+' already exists',
+        'This order is already in: '+deptNames+'. Re-add it as a new "In Queue" entry?',
+        forceAdd
+      );
+      // Override confirm button text
+      document.getElementById('confirm-ok').textContent='Re-add';
+    } else {
+      addNew();
+    }
   }
   btn.addEventListener('click',doAdd);
   inp.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();doAdd();}});
@@ -769,41 +923,19 @@ function makeDeptCard(dept){
     var em=document.createElement('p');
     em.className='empty'; em.textContent='No orders yet';
     list.appendChild(em);
-  } else if(!isDoor){
-    // Feeder depts: all orders inline — active first then completed so teams can cross-reference
+  } else {
+    // All depts: active first then completed inline for cross-reference
     active.forEach(function(o){ list.appendChild(makeOrderItem(o,dept)); });
     completed.forEach(function(o){ list.appendChild(makeOrderItem(o,dept)); });
-  } else {
-    // Door Assembly: active orders shown
-    active.forEach(function(o){ list.appendChild(makeOrderItem(o,dept)); });
   }
   card.appendChild(list);
 
-  // Door Assembly only: collapsible completed section
-  if(isDoor&&completed.length>0){
-    var toggle=document.createElement('div');
-    toggle.className='completed-toggle';
-    var isOpen=showCompleted[dept.id]||false;
-    toggle.innerHTML='<span class="toggle-label">Completed ('+completed.length+')</span>'
-      +'<span class="toggle-arrow'+(isOpen?' open':'')+'">▼</span>';
-    var cList=document.createElement('div');
-    cList.className='order-list';
-    cList.style.display=isOpen?'block':'none';
-    completed.forEach(function(o){ cList.appendChild(makeOrderItem(o,dept)); });
-    toggle.addEventListener('click',function(){
-      showCompleted[dept.id]=!showCompleted[dept.id];
-      cList.style.display=showCompleted[dept.id]?'block':'none';
-      toggle.querySelector('.toggle-arrow').className='toggle-arrow'+(showCompleted[dept.id]?' open':'');
-    });
-    card.appendChild(toggle);
-    card.appendChild(cList);
-  }
+  
   return card;
 }
 
 // ─── ORDER ITEM ────────────────────────────────────────────────
 function makeOrderItem(o,dept){
-  var isDoor=dept.id===DOOR_ID;
   var item=document.createElement('div');
   item.className='order-item'+(o.status==='done'?' done':'');
 
@@ -859,18 +991,7 @@ function makeOrderItem(o,dept){
       var cur=data[deptId][idx].status;
       var ns=cur==='done'?'pending':'done';
       data[deptId][idx].status=ns;
-      if(deptId===DOOR_ID&&ns==='done'){
-        // Marking done in Door Assembly clears it from all feeder depts
-        var toSave=[DOOR_ID];
-        FEEDER_IDS.forEach(function(fid){
-          var before=(data[fid]||[]).length;
-          data[fid]=(data[fid]||[]).filter(function(x){return x.num.toLowerCase()!==order.num.toLowerCase();});
-          if(data[fid].length!==before) toSave.push(fid);
-        });
-        saveMany(toSave).then(function(){renderAll();note('Saved '+timeNow());});
-      } else {
-        saveDept(deptId,data[deptId]).then(function(){renderAll();note('Saved '+timeNow());});
-      }
+      saveDept(deptId,data[deptId]).then(function(){renderAll();note('Saved '+timeNow());});
     });
     del.addEventListener('click',function(e){
       e.stopPropagation();
@@ -892,7 +1013,13 @@ function showConfirm(title,body,cb){
   document.getElementById('confirm-body').textContent=body;
   pendingCb=cb; cBg.classList.add('open');
 }
-document.getElementById('confirm-ok').addEventListener('click',function(){cBg.classList.remove('open');if(pendingCb)pendingCb();pendingCb=null;});
+document.getElementById('confirm-ok').addEventListener('click',function(){
+  cBg.classList.remove('open');
+  if(pendingCb)pendingCb();
+  pendingCb=null;
+  // Reset button text back to default
+  document.getElementById('confirm-ok').textContent='Remove';
+});
 document.getElementById('confirm-cancel').addEventListener('click',function(){cBg.classList.remove('open');pendingCb=null;});
 cBg.addEventListener('click',function(e){if(e.target===cBg){cBg.classList.remove('open');pendingCb=null;}});
 
@@ -1009,24 +1136,323 @@ importBtn.addEventListener('click',function(){
   saveMany(Object.keys(toSave)).then(function(){importModal.classList.remove('open');renderAll();note('Imported · '+timeNow());});
 });
 
+// ─── REBUILD TAB ───────────────────────────────────────────────
+var rebuildData = [];
+
+function loadRebuild(){
+  try{ rebuildData=JSON.parse(localStorage.getItem('icl_rebuild'))||[]; }catch(e){ rebuildData=[]; }
+  if(FIREBASE_URL){
+    fetch(FIREBASE_URL+'/rebuild.json').then(function(r){return r.json();}).then(function(j){
+      rebuildData=Array.isArray(j)?j:(j?Object.values(j):[]);
+      renderRebuildTab();
+    }).catch(function(){ renderRebuildTab(); });
+  } else {
+    renderRebuildTab();
+  }
+}
+
+function saveRebuild(){
+  try{ localStorage.setItem('icl_rebuild',JSON.stringify(rebuildData)); }catch(e){}
+  if(FIREBASE_URL){
+    fetch(FIREBASE_URL+'/rebuild.json',{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(rebuildData)}).catch(function(){});
+  }
+}
+
+function buildRebuildForm(){
+  var page=document.getElementById('page-rebuild');
+  page.innerHTML='';
+  var intro=document.createElement('div');
+  intro.className='rebuild-intro';
+  intro.innerHTML='<h2>&#x1F527; Rebuild Parts</h2><p>All fields required except Center Rail.</p>';
+  page.appendChild(intro);
+  var form=document.createElement('div');
+  form.className='rebuild-form';
+  form.innerHTML='<h3>New Rebuild Entry</h3>';
+
+  function field(label,id,placeholder,optional){
+    var row=document.createElement('div');
+    row.className='field-row'+(optional?' optional':'');
+    var lbl=document.createElement('label');
+    lbl.setAttribute('for','rb-'+id); lbl.textContent=label;
+    var inp=document.createElement('input');
+    inp.type='text'; inp.id='rb-'+id; inp.placeholder=placeholder||'';
+    inp.autocomplete='off';
+    if(id==='qty') inp.inputMode='numeric';
+    row.appendChild(lbl); row.appendChild(inp);
+    return row;
+  }
+
+  var g1=document.createElement('div'); g1.className='field-grid';
+  g1.appendChild(field('Order #','order','e.g. 143681'));
+  g1.appendChild(field('Qty','qty','e.g. 4'));
+  form.appendChild(g1);
+  form.appendChild(field('Material Type','material','e.g. White Maple'));
+
+  // Rail Profile (shared) + Stile Width + Cope Width
+  form.appendChild(field('Rail Profile','rail_profile','e.g. SDR085'));
+
+  var gw=document.createElement('div'); gw.className='field-grid';
+  gw.appendChild(field('Stile Width','stile_width','e.g. 2-1/4"'));
+  gw.appendChild(field('Cope Width','cope_width','e.g. 1-3/4"'));
+  form.appendChild(gw);
+
+  // Stile size + Cope size
+  var gs=document.createElement('div'); gs.className='field-grid';
+  gs.appendChild(field('Stile Size','stile_size','e.g. 96"'));
+  gs.appendChild(field('Cope Size','cope_size','e.g. 14"'));
+  form.appendChild(gs);
+
+  // Panel
+  var gp=document.createElement('div'); gp.className='field-grid';
+  gp.appendChild(field('Panel Species','panel_species','e.g. White Maple'));
+  gp.appendChild(field('Panel Size','panel_size','e.g. 1/4" MDF'));
+  form.appendChild(gp);
+  form.appendChild(field('Center Rail Size','center_rail','e.g. 2"',true));
+  form.appendChild(field('Finish Door Size','door_size','e.g. 14" x 28-1/2"'));
+
+  var submitBtn=document.createElement('button');
+  submitBtn.type='button'; submitBtn.className='submit-btn';
+  submitBtn.textContent='+ Add Rebuild Entry';
+  submitBtn.addEventListener('click',function(){
+    var required=['order','qty','material','rail_profile','stile_width','cope_width','stile_size','cope_size','panel_species','panel_size','door_size'];
+    var vals={}; var allOk=true;
+    required.forEach(function(id){
+      var el=document.getElementById('rb-'+id);
+      vals[id]=el.value.trim();
+      if(!vals[id]){ el.style.borderColor='#ff453a'; allOk=false; }
+      else el.style.borderColor='';
+    });
+    vals['center_rail']=(document.getElementById('rb-center_rail').value||'').trim();
+    if(!allOk) return;
+    rebuildData.unshift({
+      order:vals['order'],qty:vals['qty'],material:vals['material'],
+      railProfile:vals['rail_profile'],
+      stileWidth:vals['stile_width'],copeWidth:vals['cope_width'],
+      stileSize:vals['stile_size'],copeSize:vals['cope_size'],
+      panelSpecies:vals['panel_species'],panelSize:vals['panel_size'],
+      centerRail:vals['center_rail'],
+      doorSize:vals['door_size'],
+      checks:{chop:false,panel:false,cope:false},
+      ts:Date.now()
+    });
+    saveRebuild();
+    ['order','qty','material','rail_profile','stile_width','cope_width','stile_size','cope_size','panel_species','panel_size','center_rail','door_size'].forEach(function(id){
+      var el=document.getElementById('rb-'+id);
+      if(el){ el.value=''; el.style.borderColor=''; }
+    });
+    var first=document.getElementById('rb-order');
+    if(first) first.focus();
+    renderRebuildList();
+    note('Rebuild saved');
+  });
+  form.appendChild(submitBtn);
+  page.appendChild(form);
+  var lc=document.createElement('div'); lc.id='rebuild-list-container';
+  page.appendChild(lc);
+  renderRebuildList();
+}
+
+function renderRebuildList(){
+  var container=document.getElementById('rebuild-list-container');
+  if(!container) return;
+  container.innerHTML='';
+  var listCard=document.createElement('div'); listCard.className='rebuild-list';
+  var hdr=document.createElement('div'); hdr.className='rebuild-list-header';
+  hdr.innerHTML='<h3>Rebuild Orders</h3><span class="rebuild-count">'+rebuildData.length+' entr'+(rebuildData.length===1?'y':'ies')+'</span>';
+  listCard.appendChild(hdr);
+  if(!rebuildData.length){
+    var em=document.createElement('div'); em.className='rebuild-empty'; em.textContent='No rebuild entries yet';
+    listCard.appendChild(em);
+  } else {
+    rebuildData.forEach(function(r,i){
+      var item=document.createElement('div'); item.className='rebuild-item';
+      var top=document.createElement('div'); top.className='rebuild-item-top';
+      var oEl=document.createElement('div'); oEl.className='rebuild-order'; oEl.textContent=r.order;
+      var qEl=document.createElement('span'); qEl.className='rebuild-qty'; qEl.textContent='Qty: '+r.qty;
+      var dBtn=document.createElement('button'); dBtn.type='button'; dBtn.className='rebuild-item-del'; dBtn.textContent='✕';
+      top.appendChild(oEl); top.appendChild(qEl); top.appendChild(dBtn);
+      item.appendChild(top);
+      var matEl=document.createElement('div');
+      matEl.style.cssText='font-size:13px;color:var(--text2);margin-bottom:6px;font-weight:500;';
+      matEl.textContent=r.material; item.appendChild(matEl);
+
+      // ── Dept sections with check button built into each header
+      if(!r.checks) r.checks={chop:false,panel:false,cope:false};
+      var deptQty = parseInt(r.qty)||1;
+      var railQty = deptQty * 2; // stile & cope: 2 per door
+
+      function makeDeptSection(label, color, checkKey, rows, qty, rebuildRow){
+        var sec=document.createElement('div');
+        sec.style.cssText='margin-bottom:8px;border-radius:10px;border:1.5px solid;overflow:hidden;transition:border-color .15s;'
+          +'border-color:'+(rebuildRow.checks[checkKey]?color:color+'40')+';';
+
+        // Header row: dept name | qty pill | check button
+        var hdr=document.createElement('div');
+        hdr.style.cssText='display:flex;align-items:center;gap:8px;'
+          +'padding:7px 10px;background:'+(rebuildRow.checks[checkKey]?color+'30':color+'14')+';'
+          +'border-bottom:1px solid '+(rebuildRow.checks[checkKey]?color+'60':color+'25')+';'
+          +'transition:background .15s;';
+
+        var htitle=document.createElement('span');
+        htitle.style.cssText='font-size:12px;font-weight:700;color:'+color+';letter-spacing:.4px;text-transform:uppercase;flex:1;';
+        htitle.textContent=label;
+
+        var hqty=document.createElement('span');
+        hqty.style.cssText='font-size:11px;font-weight:700;color:'+color+';background:'+color+'22;'
+          +'padding:2px 8px;border-radius:20px;white-space:nowrap;';
+        hqty.textContent='Qty: '+qty;
+
+        // Check button integrated in header
+        var checkBtn=document.createElement('div');
+        var isOn=!!(rebuildRow.checks[checkKey]);
+        checkBtn.style.cssText='display:flex;align-items:center;gap:5px;cursor:pointer;'
+          +'padding:4px 10px;border-radius:20px;border:1.5px solid;touch-action:manipulation;'
+          +'-webkit-tap-highlight-color:transparent;transition:all .15s;white-space:nowrap;'
+          +'border-color:'+(isOn?color:'#2a4a70')+';'
+          +'background:'+(isOn?color:'transparent')+';';
+
+        var cbDot=document.createElement('span');
+        cbDot.style.cssText='width:14px;height:14px;border-radius:50%;border:2px solid;flex-shrink:0;'
+          +'display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;'
+          +'color:#fff;transition:all .15s;'
+          +'border-color:'+(isOn?'#fff':'#6e88a6')+';'
+          +'background:'+(isOn?'rgba(255,255,255,0.3)':'transparent')+';';
+        cbDot.textContent=isOn?'✓':'';
+
+        var cbLbl=document.createElement('span');
+        cbLbl.style.cssText='font-size:11px;font-weight:700;transition:color .15s;'
+          +'color:'+(isOn?'#fff':'#6e88a6')+';';
+        cbLbl.textContent=isOn?'Done':'Mark Done';
+
+        checkBtn.appendChild(cbDot); checkBtn.appendChild(cbLbl);
+
+        hdr.appendChild(htitle); hdr.appendChild(hqty); hdr.appendChild(checkBtn);
+        sec.appendChild(hdr);
+
+        // Body rows
+        var body=document.createElement('div');
+        body.style.cssText='display:grid;grid-template-columns:1fr 1fr;gap:0;';
+        rows.forEach(function(row){
+          if(!row.val) return;
+          var d=document.createElement('div');
+          d.style.cssText='padding:5px 10px;font-size:12px;color:var(--text2);border-bottom:1px solid var(--border-light);';
+          d.innerHTML='<span style="color:var(--text3);font-weight:600;">'+row.label+'</span> '+row.val;
+          body.appendChild(d);
+        });
+        sec.appendChild(body);
+
+        // Toggle handler on the check button only
+        (function(key,col,btnEl,dotEl,lblEl,secEl,hdrEl){
+          function toggle(e){
+            e.preventDefault(); e.stopPropagation();
+            rebuildRow.checks[key]=!rebuildRow.checks[key];
+            var on=rebuildRow.checks[key];
+            btnEl.style.borderColor=on?col:'#2a4a70';
+            btnEl.style.background=on?col:'transparent';
+            dotEl.style.borderColor=on?'#fff':'#6e88a6';
+            dotEl.style.background=on?'rgba(255,255,255,0.3)':'transparent';
+            dotEl.textContent=on?'✓':'';
+            lblEl.style.color=on?'#fff':'#6e88a6';
+            lblEl.textContent=on?'Done':'Mark Done';
+            secEl.style.borderColor=on?col:col+'40';
+            hdrEl.style.background=on?col+'30':col+'14';
+            hdrEl.style.borderBottomColor=on?col+'60':col+'25';
+            saveRebuild();
+            updateTabBadges();
+            if(document.getElementById('page-ready').classList.contains('active')) renderReadyTab();
+          }
+          btnEl.addEventListener('click', toggle);
+          btnEl.addEventListener('touchend', function(e){ toggle(e); }, {passive:false});
+        })(checkKey, color, checkBtn, cbDot, cbLbl, sec, hdr);
+
+        return sec;
+      }
+
+      // Chop Saw — stile AND cope parts (chop cuts both)
+      // Cope size for chop saw = entered size + 0.250 (chop cuts long, cope trims to finish)
+      var chopCopeSize=(function(){
+        var raw=(r.copeSize||'').trim();
+        // Try to parse a leading number (handles "14", "14.5", "14-1/2", "14 1/2")
+        // Convert fractions like 1/2 to decimals first
+        var normalized=raw.replace(/(\d+)\s*\/\s*(\d+)/g,function(m,n,d){return (parseInt(n)/parseInt(d)).toFixed(4);});
+        // Now grab the first numeric value
+        var match=normalized.match(/^[\d.]+/);
+        if(match){
+          var num=parseFloat(match[0]);
+          var added=(num+0.25).toFixed(3).replace(/\.?0+$/,'');
+          // Keep any trailing text (e.g. units) from original
+          var remainder=raw.slice(match[0].length);
+          return added+remainder+' <span style="font-size:10px;color:#8a6aff;font-weight:600;">(+¼")</span>';
+        }
+        return raw; // fallback: can't parse, show as-is
+      })();
+
+      item.appendChild(makeDeptSection('Chop Saw','#4a9eff','chop',[
+        {label:'Rail Profile:', val:r.railProfile||''},
+        {label:'Stile Width:',  val:r.stileWidth||''},
+        {label:'Stile Size:',   val:r.stileSize||''},
+        {label:'Cope Width:',   val:r.copeWidth||''},
+        {label:'Cope Size:',    val:chopCopeSize},
+        {label:'Center Rail:',  val:r.centerRail||''}
+      ], railQty, r));
+
+      // Cope
+      item.appendChild(makeDeptSection('Cope','#ff6b35','cope',[
+        {label:'Rail Profile:', val:r.railProfile||''},
+        {label:'Cope Width:',   val:r.copeWidth||''},
+        {label:'Cope Size:',    val:r.copeSize||''},
+        {label:'Center Rail:',  val:r.centerRail||''}
+      ], railQty, r));
+
+      // Panel Saw
+      item.appendChild(makeDeptSection('Panel Saw','#30d158','panel',[
+        {label:'Panel Species:', val:r.panelSpecies||''},
+        {label:'Panel Size:',    val:r.panelSize||''}
+      ], deptQty, r));
+
+      // Finish Door size
+      if(r.doorSize){
+        var fdRow=document.createElement('div');
+        fdRow.style.cssText='font-size:12px;color:var(--text2);padding:5px 2px;margin-top:2px;';
+        fdRow.innerHTML='<span style="color:var(--text3);font-weight:600;">Finish Door:</span> '+r.doorSize;
+        item.appendChild(fdRow);
+      }
+      (function(idx){
+        dBtn.addEventListener('click',function(){
+          showConfirm('Remove rebuild entry?','Order '+rebuildData[idx].order+' will be removed.',function(){
+            rebuildData.splice(idx,1); saveRebuild(); renderRebuildList();
+          });
+        });
+      })(i);
+      listCard.appendChild(item);
+    });
+  }
+  container.appendChild(listCard);
+}
+
+function renderRebuildTab(){
+  if(!document.getElementById('rb-order')){
+    buildRebuildForm();
+  } else {
+    renderRebuildList();
+  }
+}
+
+// 3-col grid CSS (added here if not in style)
+(function(){
+  var s=document.createElement('style');
+  s.textContent='.field-grid-3{grid-template-columns:repeat(3,1fr);} @media(max-width:520px){.field-grid-3{grid-template-columns:1fr;}}';
+  document.head.appendChild(s);
+})();
+
 // ─── BOOT ──────────────────────────────────────────────────────
 document.getElementById('refresh-btn').addEventListener('click',loadAll);
 loadAll();
-setInterval(loadAll,20000);
+setInterval(loadAll,10000); // refresh every 10 seconds
 </script>
 <!--
-  README — Integrity Cut List
-  SYNC RULES
-  • Chop Saw adds    → all 4 depts
-  • Panel Saw / Cope → Door Assembly too
-  • Door Assembly ▶  → removed from Chop Saw, Panel Saw & Cope
-  • ✕ Delete         → that dept only
-  • Ready for Assembly tab → shows orders done in BOTH Panel Saw AND Cope
-
-  CROSS-DEVICE SETUP
-  1. console.firebase.google.com → new project → Realtime Database → test mode
-  2. Copy DB URL → paste into FIREBASE_URL = '...'
-  3. Host on app.netlify.com/drop → share URL with all depts
+  README -- Integrity Cut List
+  Sync rules, Firebase setup, etc. unchanged.
 -->
 </body>
 </html>
