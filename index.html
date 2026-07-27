@@ -302,8 +302,11 @@ header h1{font-size:18px;font-weight:700;color:#fff;letter-spacing:-.3px;flex:1;
     <div class="tab" data-tab="ready">
       <div class="tab-dot" style="background:var(--ready)"></div>Ready for Assembly
     </div>
-    <div class="tab" data-tab="rebuild">
-      <div class="tab-dot" style="background:#e056a0"></div>Rebuild
+    <div class="tab" data-tab="rebuild_list">
+      <div class="tab-dot" style="background:#e056a0"></div>Rebuild List
+    </div>
+    <div class="tab" data-tab="rebuild_entry">
+      <div class="tab-dot" style="background:#e056a0"></div>+ Rebuild Entry
     </div>
   </div>
 </header>
@@ -315,8 +318,10 @@ header h1{font-size:18px;font-weight:700;color:#fff;letter-spacing:-.3px;flex:1;
 <!-- READY FOR ASSEMBLY PAGE -->
 <div class="page" id="page-ready"></div>
 
-<!-- REBUILD PAGE -->
-<div class="page" id="page-rebuild"></div>
+<!-- REBUILD LIST PAGE -->
+<div class="page" id="page-rebuild_list"></div>
+<!-- REBUILD ENTRY PAGE -->
+<div class="page" id="page-rebuild_entry"></div>
 
 <!-- IMPORT SHEET -->
 <div class="sheet-bg" id="import-modal">
@@ -454,7 +459,10 @@ document.getElementById('tab-bar').addEventListener('click',function(e){
   tab.classList.add('active');
   document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active');});
   document.getElementById('page-'+id).classList.add('active');
-  if(id==='rebuild') renderRebuildTab();
+  if(id==='rebuild_list') renderRebuildList();
+  if(id==='rebuild_entry'){
+    if(!document.getElementById('rb-order')) buildRebuildForm();
+  }
   if(id==='ready'){
     // Always pull fresh data from Firebase before rendering ready tab
     if(FIREBASE_URL){
@@ -512,6 +520,27 @@ function updateTabBadges(){
     if(tab.classList.contains('active')) tab.style.borderBottomColor=color;
     else tab.style.borderBottomColor='transparent';
   });
+  // Rebuild List tab badge — count of rebuild entries
+  var rebuildListTab=document.querySelector('.tab[data-tab="rebuild_list"]');
+  if(rebuildListTab){
+    var oldRb=rebuildListTab.querySelector('.badge-count');
+    if(oldRb) oldRb.remove();
+    if(rebuildData&&rebuildData.length>0){
+      var rbBadge=document.createElement('span');
+      rbBadge.className='badge-count';
+      rbBadge.style.background='#e056a0';
+      rbBadge.textContent=rebuildData.length;
+      rebuildListTab.appendChild(rbBadge);
+    }
+    if(rebuildListTab.classList.contains('active')) rebuildListTab.style.borderBottomColor='#e056a0';
+    else rebuildListTab.style.borderBottomColor='transparent';
+  }
+  // Rebuild Entry tab underline
+  var rebuildEntryTab=document.querySelector('.tab[data-tab="rebuild_entry"]');
+  if(rebuildEntryTab){
+    if(rebuildEntryTab.classList.contains('active')) rebuildEntryTab.style.borderBottomColor='#e056a0';
+    else rebuildEntryTab.style.borderBottomColor='transparent';
+  }
   // Remove door tab underline if somehow still present
   // Ready tab badge: count ready orders
   var readyTab=document.querySelector('.tab[data-tab="ready"]');
@@ -1144,10 +1173,12 @@ function loadRebuild(){
   if(FIREBASE_URL){
     fetch(FIREBASE_URL+'/rebuild.json').then(function(r){return r.json();}).then(function(j){
       rebuildData=Array.isArray(j)?j:(j?Object.values(j):[]);
-      renderRebuildTab();
-    }).catch(function(){ renderRebuildTab(); });
+      renderRebuildList();
+      updateTabBadges();
+    }).catch(function(){ renderRebuildList(); updateTabBadges(); });
   } else {
-    renderRebuildTab();
+    renderRebuildList();
+    updateTabBadges();
   }
 }
 
@@ -1159,7 +1190,7 @@ function saveRebuild(){
 }
 
 function buildRebuildForm(){
-  var page=document.getElementById('page-rebuild');
+  var page=document.getElementById('page-rebuild_entry');
   page.innerHTML='';
   var intro=document.createElement('div');
   intro.className='rebuild-intro';
@@ -1243,18 +1274,25 @@ function buildRebuildForm(){
     var first=document.getElementById('rb-order');
     if(first) first.focus();
     renderRebuildList();
+    updateTabBadges();
     note('Rebuild saved');
   });
   form.appendChild(submitBtn);
   page.appendChild(form);
-  var lc=document.createElement('div'); lc.id='rebuild-list-container';
-  page.appendChild(lc);
-  renderRebuildList();
 }
 
 function renderRebuildList(){
+  // If there's a list container already, just update it
   var container=document.getElementById('rebuild-list-container');
-  if(!container) return;
+  if(!container){
+    // Build the list container inside page-rebuild_list
+    var listPage=document.getElementById('page-rebuild_list');
+    if(!listPage) return;
+    listPage.innerHTML='';
+    container=document.createElement('div');
+    container.id='rebuild-list-container';
+    listPage.appendChild(container);
+  }
   container.innerHTML='';
   var listCard=document.createElement('div'); listCard.className='rebuild-list';
   var hdr=document.createElement('div'); hdr.className='rebuild-list-header';
@@ -1430,12 +1468,10 @@ function renderRebuildList(){
   container.appendChild(listCard);
 }
 
+// renderRebuildTab kept for backward compat — now split across two pages
 function renderRebuildTab(){
-  if(!document.getElementById('rb-order')){
-    buildRebuildForm();
-  } else {
-    renderRebuildList();
-  }
+  renderRebuildList();
+  if(!document.getElementById('rb-order')) buildRebuildForm();
 }
 
 // 3-col grid CSS (added here if not in style)
